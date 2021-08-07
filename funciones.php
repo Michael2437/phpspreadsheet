@@ -1,5 +1,7 @@
 <?php
+
      class Funcion{
+        
         public function conectar(){
             $bd="mysql:host=localhost;dbname=visitas";
             $user="root";
@@ -12,8 +14,9 @@
             return $conexion;  
         }
 
-        public function mostrardatos($con){
-            $consulta=$con->prepare('SELECT *,time_format(horaingreso, "%H:%i"),time_format(horasalida, "%H:%i"),date_format(fecha, "%d/%m/%Y") FROM `visitas`');
+        public function mostrardatos($con,$hoy){
+            $consulta=$con->prepare('SELECT *,time_format(horaingreso, "%H:%i"),time_format(horasalida, "%H:%i"),date_format(fecha, "%d/%m/%Y") FROM `visitas`
+            WHERE fecha BETWEEN "'.$hoy.'" and "'.$hoy.'"');
             $consulta->execute();
             return $consulta;
         }

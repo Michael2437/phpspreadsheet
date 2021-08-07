@@ -8,10 +8,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/buttons/1.6.5/css/buttons.dataTables.min.css">    
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="style.css">
-    <script
-  src="https://code.jquery.com/jquery-3.6.0.js"
-  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
-  crossorigin="anonymous"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
     <title>Buscar</title>
 </head>
 <body>
@@ -74,76 +71,52 @@
         </form>
             <div class="text-center mt-3 mb-3">
                 <button onclick="miFunc()" id="enviar" class="btn btn-primary">Buscar</button>
-                <!-- <a href="phpspreadsheet/excel.php" class="btn btn-primary">Exportar A Excel</a> -->
-                <button onclick="buscar.submit()" class="btn btn-primary">Exportar A Excel</button>
-                <!-- <button type="reset" onclick="buscar.reset()" class="btn btn-primary">Limpiar</button> -->
+<!--                 Boton para habilitar la exportacion a excel
+                <button onclick="buscar.submit()" class="btn btn-primary">Exportar A Excel</button> -->
             </div>
            
             <table class="table table-dark table-striped text-center" id="myTable">
-            <thead>
-                <tr>
-                <th scope="col">Item</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">HoraIng</th>
-                <th scope="col">Nombre</th>
-                <th scope="col">Documento</th>
-                <th scope="col">Institucion</th>
-                <th scope="col">Visitado</th>
-                <th scope="col">Cargo</th>
-                <th scope="col">Oficina</th>
-                <th scope="col">HoraSal</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if(!empty($datos)){
-                        while($fila=$datos->fetch()){
-                            $id=$fila['idvisita'];
-                            $fecha=$fila['date_format(fecha, "%d/%m/%Y")'];
-                            $horaing=$fila['time_format(horaingreso, "%H:%i")'];
-                            $nombre=$fila['nombre'];
-                            $documento=$fila['documento'];
-                            $institucion=$fila['institucion'];
-                            $visitado=$fila['visitado'];
-                            $cargo=$fila['cargo'];
-                            $oficina=$fila['oficina'];
-                            $horasal=$fila['time_format(horasalida, "%H:%i")'];
-                            $array=array($id,$fecha,$horaing,$nombre,$documento,$institucion,$visitado,$cargo,$oficina,$horasal);
-                ?>  
-                <tr>
-                    <?php    for($i=0;$i<10;$i++){?>
-                        <td><?php echo $array[$i];?></td>
-                    <?php }?>
-                </tr>
-            <?php   }
-            }?>
-            </tbody>
+                <thead>
+                    <tr>
+                    <th scope="col">Item</th>
+                    <th scope="col">Fecha</th>
+                    <th scope="col">HoraIng</th>
+                    <th scope="col">Nombre</th>
+                    <th scope="col">Documento</th>
+                    <th scope="col">Institucion</th>
+                    <th scope="col">Visitado</th>
+                    <th scope="col">Cargo</th>
+                    <th scope="col">Oficina</th>
+                    <th scope="col">HoraSal</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <?php if(!empty($datos)){
+                            while($fila=$datos->fetch()){
+                                $id=$fila['idvisita'];
+                                $fecha=$fila['date_format(fecha, "%d/%m/%Y")'];
+                                $horaing=$fila['time_format(horaingreso, "%H:%i")'];
+                                $nombre=$fila['nombre'];
+                                $documento=$fila['documento'];
+                                $institucion=$fila['institucion'];
+                                $visitado=$fila['visitado'];
+                                $cargo=$fila['cargo'];
+                                $oficina=$fila['oficina'];
+                                $horasal=$fila['time_format(horasalida, "%H:%i")'];
+                                $array=array($id,$fecha,$horaing,$nombre,$documento,$institucion,$visitado,$cargo,$oficina,$horasal);
+                    ?>  
+                    <tr>
+                        <?php    for($i=0;$i<10;$i++){?>
+                            <td><?php echo $array[$i];?></td>
+                        <?php }?>
+                    </tr>
+                <?php   }
+                }?>
+                </tbody>
             </table>
-            
     </div>
 </div>
-    <!-- <script type="text/javascript">
-        $('#enviar').on('click',function(){
-            
-                    $(document).ready(function(){    
-                    $("#table_refresh").load("seccion.php");
-                     }); 
-        });
-    </script>
-    <script>
- // Write on keyup event of keyword input element
- $(document).ready(function(){
-    $("#nomVisitante").keyup(function(){
-        _this = this;
-        // Show only matching TR, hide rest of them
-            $.each($("#mytable tbody tr"), function() {
-                if($(this).text().toLowerCase().indexOf($(_this).val().toLowerCase()) === -1)
-                $(this).hide();
-                else
-                $(this).show();
-            });
-    });
-});
-</script> -->
+    
 <!-- jquery y bootstrap -->
 <script src="https://code.jquery.com/jquery-3.5.1.js"></script>   
  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
