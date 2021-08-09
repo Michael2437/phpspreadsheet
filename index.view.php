@@ -9,7 +9,7 @@
     <link rel="stylesheet" href="https://cdn.datatables.net/1.10.23/css/dataTables.bootstrap5.min.css">
     <link rel="stylesheet" href="style.css">
     <script src="https://code.jquery.com/jquery-3.6.0.js" integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
-    <title>Buscar</title>
+    <title>Visitas <?php echo $hoy;?></title>
 </head>
 <body>
 <div id="datos">
@@ -74,10 +74,10 @@
 <!--                 Boton para habilitar la exportacion a excel
                 <button onclick="buscar.submit()" class="btn btn-primary">Exportar A Excel</button> -->
             </div>
-           
-            <table class="table table-dark table-striped text-center" id="myTable">
+        <div class="table-responsive">   
+            <table class="table table-striped text-center" id="myTable">
                 <thead>
-                    <tr>
+                    <tr class="table-dark">
                     <th scope="col">Item</th>
                     <th scope="col">Fecha</th>
                     <th scope="col">HoraIng</th>
@@ -91,8 +91,10 @@
                     </tr>
                 </thead>
                 <tbody>
-                    <?php if(!empty($datos)){
-                            while($fila=$datos->fetch()){
+                
+                    <?php if(!empty($datos)){ 
+                        
+                             while($fila=$datos->fetch()){
                                 $id=$fila['idvisita'];
                                 $fecha=$fila['date_format(fecha, "%d/%m/%Y")'];
                                 $horaing=$fila['time_format(horaingreso, "%H:%i")'];
@@ -105,15 +107,17 @@
                                 $horasal=$fila['time_format(horasalida, "%H:%i")'];
                                 $array=array($id,$fecha,$horaing,$nombre,$documento,$institucion,$visitado,$cargo,$oficina,$horasal);
                     ?>  
-                    <tr>
+                    <tr class="table-primary">
                         <?php    for($i=0;$i<10;$i++){?>
                             <td><?php echo $array[$i];?></td>
                         <?php }?>
-                    </tr>
+                        </tr>
                 <?php   }
-                }?>
+             }?>
+                
                 </tbody>
             </table>
+            </div>
     </div>
 </div>
     
