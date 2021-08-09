@@ -15,7 +15,7 @@
 <div id="datos">
     <div class="container">
         <h2 class="text-center mb-3">Búsqueda de Visitas</h2>
-        <form action="phpspreadsheet/excel.php" method="POST" class="form" name="buscar">
+        <form action="" method="POST" class="form" name="buscar">
             <div class="form-control">
             <div class="row">
                 <div class="col-md-4">
